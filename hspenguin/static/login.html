@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -43,13 +44,14 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}"  rel="stylesheet">
   </head>
   <body class="text-center">
     
 <main class="form-signin">
-  <form>
-    <img class="mb-4" src="logo.svg" alt="" width="72" height="57">
+  <form method="post" action="{% url 'submitform' % }">
+    {% csrf_token %}
+    <img class="mb-4" src="{% static 'img/logo.svg' %}"  alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     
     <div class="form-floating">
